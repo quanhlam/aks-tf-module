@@ -1,0 +1,1 @@
+# Solutions for dynamic terraform module
