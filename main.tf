@@ -24,10 +24,17 @@ resource "azurerm_kubernetes_cluster" "cluster" {
 #   source = "./workload-identities"
 # }
 
-resource "azurerm_user_assigned_identity" "app-teams-uai" {
+module "app-teams-uai" {
+  source              = "./workload-identities-solution-4"
   for_each            = local.wi_json_data
   location            = local.resource_group_location
-  name                = each.value.name
+  uai_name            = each.value.name
   resource_group_name = local.resource_group_name
+  role_assignments = [
+    for item in each.value.role_assignments : {
+      role_name = item.role_name
+      scope     = item.scope
+    }
+  ]
+  # role_assignments = each.value.role_assignments
 }
-

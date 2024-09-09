@@ -1,0 +1,11 @@
+{
+    "app_team_1": {
+        "name": "app-team-1",
+        "role_assignments": [
+            {
+                "scope": "/subscriptions/b5421ae3-32df-459b-8a71-52a6b1c9f6d0/resourceGroups/rg-1/providers/Microsoft.KeyVault/vaults/kv-1-q9",
+                "role_name": "Key Vault Reader"
+            }
+        ]
+    }
+}
