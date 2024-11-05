@@ -1,5 +1,5 @@
 locals {
-  aks_cluster_name        = "snoodle-3"
+  aks_cluster_name        = var.name_prefix
   resource_group_location = var.location
   resource_group_name     = var.resource_group_name
 

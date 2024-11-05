@@ -8,6 +8,6 @@ output "cluster_name" {
   value = azurerm_kubernetes_cluster.cluster.name
 }
 
-output "karpenter_uai_name" {
-  value = azurerm_user_assigned_identity.karpenter-uai.name
-}
+# output "karpenter_uai_name" {
+#   value = azurerm_user_assigned_identity.karpenter-uai[0].name
+# }
