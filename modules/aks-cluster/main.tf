@@ -12,6 +12,11 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     name       = "default"
     node_count = 1
     vm_size    = var.vm_size
+    upgrade_settings {
+      drain_timeout_in_minutes      = 0
+      max_surge                     = "10%"
+      node_soak_duration_in_minutes = 0
+    }
   }
 
   identity {
@@ -19,7 +24,8 @@ resource "azurerm_kubernetes_cluster" "cluster" {
   }
 
   tags = {
-    Environment = "Dev"
+    Environment  = "Dev"
+    "product_id" = "15336"
   }
 }
 
@@ -29,6 +35,9 @@ resource "azurerm_user_assigned_identity" "karpenter-uai" {
   location            = local.resource_group_location
   name                = "karpenter-uai-${local.aks_cluster_name}"
   resource_group_name = local.resource_group_name
+  tags = {
+    "product_id" = "15336"
+  }
 }
 
 resource "azurerm_federated_identity_credential" "karpenter-uai-fid" {
