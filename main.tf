@@ -6,12 +6,12 @@ resource "azurerm_resource_group" "rg1" {
 }
 
 resource "azurerm_resource_group" "rg2" {
-  name     = "rg1"
+  name     = "rg2"
   location = var.location
 }
 
 module "cluster_primary" {
-  source              = "./aks-cluster"
+  source              = "./modules/aks-cluster"
   resource_group_name = azurerm_resource_group.rg1.name
   name_prefix         = "primary"
   location            = var.location
@@ -20,7 +20,7 @@ module "cluster_primary" {
 }
 
 module "cluster_secondary" {
-  source              = "./aks-cluster"
+  source              = "./modules/aks-cluster"
   resource_group_name = azurerm_resource_group.rg1.name
   name_prefix         = "secondary"
   location            = var.location
