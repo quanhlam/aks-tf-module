@@ -1,3 +1,4 @@
-location            = "Southeast Asia"
-vm_size             = "Standard_D2as_v4"
-resource_group_name = "vm-1_group"
+location            = "East US"
+vm_size             = "Standard_B2pls_v2"
+resource_group_name = "rg1"
+enable_karpenter    = true
